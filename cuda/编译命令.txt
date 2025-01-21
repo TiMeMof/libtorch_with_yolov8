@@ -1,0 +1,1 @@
+nvcc test.cu -o test

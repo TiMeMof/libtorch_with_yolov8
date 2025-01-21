@@ -1,0 +1,1 @@
+yolo export model=/home/mo2mo/cuda_libtorch_test/best.pt imgsz=640 format=torchscript device=0
