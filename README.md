@@ -9,6 +9,8 @@
 
 ## libtorch测试
 ### 首先要安装libtorch
+官网：https://pytorch.org/get-started/locally/
+选择(cxx11 ABI)版本而非(Pre-cxx11 ABI)版本，Pre是旧版本
 这里直接官网下载libtorch的zip文件，直接解压到/usr/local/下，得到libtorch。即为/usr/local/libtorch
 
 ### 测试库
