@@ -26,6 +26,7 @@ ObjectDetector::ObjectDetector(const std::string& model_path, const std::vector<
     device_(torch::cuda::is_available() ? torch::kCUDA : torch::kCPU),
     keep_boxes_(torch::empty(0)) 
 {
+    LOG(INFO) << "======================MODEL INFO======================" ;
     LOG(INFO) << "Device: " << device_ ;
     loadModel();
 }
@@ -256,8 +257,13 @@ void ObjectDetector::loadModel() {
         yolo_model_.to(device_, torch::kFloat32);
         timer.stop();
         LOG(INFO) << "Load the model: " << timer.elapsedMilliseconds() << " ms" ;
+        LOG(INFO) << "======================MODEL INFO END======================" ;
     } catch (const c10::Error& e) {
-        LOG(ERROR) << "Error loading the model: " << e.msg() ;
+        // 使用__FILE__, __LINE__, 和 __FUNCTION__ 宏来获取位置信息
+        LOG(ERROR) << "Error loading the model in function " << __FUNCTION__ 
+                  << " at " << __FILE__ << ":" << __LINE__ 
+                  << ". Error message: " << e.msg();
+        LOG(INFO) << "======================MODEL INFO END======================" ;
     }
 }
 
